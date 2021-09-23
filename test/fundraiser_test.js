@@ -6,11 +6,12 @@ contract("Fundraiser", accounts => {
 
     describe("initialization", () => {
         beforeEach (async () => {
-            fundraiser = await FundraiserContract.new(name);
+            fundraiser = await FundraiserContract.new();
+            fundraiser.name = name;
         });
 
         it("gets the beneficiary name", async () => {
-            const actual = await fundraiser.name();
+            const actual = await fundraiser.name;
             assert.equal(actual, name, "names should match");
         });
     });
