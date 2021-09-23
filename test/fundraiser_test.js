@@ -9,30 +9,26 @@ contract("Fundraiser", accounts => {
 
     describe("initialization", () => {
         beforeEach (async () => {
-            fundraiser = await FundraiserContract.new();
-            fundraiser.name = name;
-            fundraiser.url = url;
-            fundraiser.imageURL = imageURL;
-            fundraiser.description = description;
-        });
+            fundraiser = await FundraiserContract.new(name, url, imageURL, description);
+       });
 
         it("gets the beneficiary name", async () => {
-            const actual = await fundraiser.name;
+            const actual = await fundraiser.name();
             assert.equal(actual, name, "names should match");
         });
 
         it("gets the beneficiary url", async () => {
-            const actual = await fundraiser.url;
+            const actual = await fundraiser.url();
             assert.equal(actual, url, "url should match");
         });
 
         it("gets the beneficiary imageURL", async () => {
-            const actual = await fundraiser.imageURL;
+            const actual = await fundraiser.imageURL();
             assert.equal(actual, imageURL, "imageURL should match");
         });
 
         it("gets the beneficiary description", async () => {
-            const actual = await fundraiser.description;
+            const actual = await fundraiser.description();
             assert.equal(actual, description, "description should match");
         });
 
